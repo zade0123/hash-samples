@@ -134,6 +134,8 @@
         .featured-products {
             padding: 8rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .section-title {
@@ -229,6 +231,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .about-content {
@@ -295,6 +299,8 @@
         .testimonials {
             padding: 8rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .testimonial-slider {
@@ -348,6 +354,8 @@
             padding: 6rem 2rem;
             background-color: var(--dark);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .cta-content {
@@ -529,6 +537,45 @@
             width: fit-content;
             align-self: flex-start;
         }
+
+        /* Add background pattern styles */
+        .bg-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        /* Rotate and position SVGs */
+        .leaf-pattern-1 {
+            transform: rotate(15deg) scale(2);
+            opacity: 0.1;
+        }
+        
+        .leaf-pattern-2 {
+            transform: rotate(-15deg) scale(2);
+            opacity: 0.1;
+        }
+        
+        .organic-shape {
+            position: absolute;
+            top: -300px;
+            right: -300px;
+            width: 600px;
+            height: 600px;
+            opacity: 0.2;
+        }
+        
+        .wave-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
@@ -550,6 +597,9 @@
     </section>
 
     <section class="featured-products" id="products">
+        <div class="bg-pattern leaf-pattern-1">
+            <img src="./assets/svgs/leaf-pattern.svg" alt="" width="100%" height="100%" />
+        </div>
         <h2 class="section-title">Featured Products</h2>
         <p class="section-subtitle">Discover our artisanal selection of premium live resins and badders, carefully extracted to preserve the plant's full spectrum of beneficial compounds.</p>
         
@@ -587,6 +637,9 @@
     </section>
 
     <section class="about-section" id="about">
+        <div class="bg-pattern">
+            <img src="./assets/svgs/organic-shape.svg" alt="" class="organic-shape" />
+        </div>
         <h2 class="section-title">Our Philosophy</h2>
         <p class="section-subtitle centered">At HASH, we believe in the transformative power of cannabis when approached with intention and respect.</p>
         
@@ -620,6 +673,9 @@
     </section>
 
     <section class="testimonials" id="testimonials">
+        <div class="bg-pattern leaf-pattern-2">
+            <img src="./assets/svgs/leaf-pattern.svg" alt="" width="100%" height="100%" />
+        </div>
         <h2 class="section-title">Customer Experiences</h2>
         <p class="section-subtitle">Hear from our community about how HASH products have supported their wellness journey.</p>
         
@@ -639,6 +695,9 @@
     </section>
 
     <section class="cta-section">
+        <div class="bg-pattern">
+            <img src="./assets/svgs/wave-pattern.svg" alt="" class="wave-bottom" />
+        </div>
         <div class="cta-content">
             <h2>Join Our Community</h2>
             <p>Subscribe to receive updates on new products, wellness tips, and exclusive offers.</p>
