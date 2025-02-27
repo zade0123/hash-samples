@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASH - Holistic and Spiritual Health</title>
+  <style>
+    :root {
+      --primary: #222222;
+      --secondary: #f8f8f8;
+      --accent: #8dc63f;
+      --text: #333333;
+      --light: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--primary);
+      color: var(--light);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(34, 34, 34, 0.95);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--light);
+      font-weight: 600;
+      position: relative;
+      padding: 5px 0;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .hero {
+      height: 100vh;
+      background: url('./assets/images/marijuana.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(34, 34, 34, 0.9), rgba(34, 34, 34, 0.7));
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    
+    .hero h1 {
+      font-size: 72px;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      font-weight: 900;
+    }
+    
+    .hero h1 span {
+      color: var(--accent);
+    }
+    
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #7ab52e;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 42px;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .products-section {
+      padding: 120px 0;
+      background-color: var(--primary);
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+    
+    .product-card {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .product-image {
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+    
+    .product-category {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .product-info {
+      padding: 30px;
+    }
+    
+    .product-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .product-description {
+      margin-bottom: 25px;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+    
+    .stats-section {
+      padding: 100px 0;
+      background-color: var(--accent);
+      color: var(--primary);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .stat-item h3 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    
+    .stat-item p {
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .about-section {
+      padding: 120px 0;
+      background-color: var(--secondary);
+      color: var(--primary);
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+      height: 500px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .about-content h2 {
+      font-size: 42px;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    
+    .about-content h2 span {
+      color: var(--accent);
+    }
+    
+    .about-content p {
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    
+    .cta-section {
+      padding: 100px 0;
+      background: url('./assets/images/cannabisinhands.jpg') center/cover no-repeat;
+      position: relative;
+      text-align: center;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(34, 34, 34, 0.8), rgba(34, 34, 34, 0.9));
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    
+    .cta-content p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    
+    footer {
+      background-color: #1a1a1a;
+      padding: 80px 0 30px;
+    }
+    
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--light);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo span {
+      color: var(--accent);
+    }
+    
+    .footer-about p {
+      margin-bottom: 25px;
+      opacity: 0.7;
+    }
+    
+    .footer-heading {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: var(--light);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      border-radius: 50%;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent);
+      color: var(--primary);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #333;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 1024px) {
+      .products-grid,
+      .stats-grid,
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .products-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <img src="./assets/svgs/Asset 4.svg" alt="HASH Logo" style="height: 42px;">
+        </a>
+        <nav>
+          <ul>
+            <li><a href="/a.html">Sample A</a></li>
+            <li><a href="/b.html">Sample B</a></li>
+            <li><a href="/c.html">Sample C</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Elevate Your <span>Experience</span></h1>
+        <p>HASH creates premium live resin and badders for those who seek quality, purity, and spiritual connection through cannabis. Our artisanal extraction process preserves the plant's essence for a truly authentic experience.</p>
+        <a href="#" class="btn">Discover Our Products</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="products-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Premium Extracts</h2>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="./assets/images/2.png" alt="Live Resin">
+            <div class="product-category">Live Resin</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Crystal Clear Live Resin</h3>
+            <p class="product-description">Our signature live resin captures the plant's complete terpene profile, preserving the authentic aromas and effects of the original flower. Flash-frozen at harvest to maintain peak potency.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="./assets/images/4.png" alt="Badder">
+            <div class="product-category">Badder</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Cosmic Consciousness Badder</h3>
+            <p class="product-description">Smooth, creamy consistency with incredible flavor profiles. Our badders are whipped to perfection, delivering a balanced experience that elevates both mind and body.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="./assets/images/7.png" alt="Limited Edition">
+            <div class="product-category">Limited Edition</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Chakra Collection</h3>
+            <p class="product-description">Our exclusive collection of seven unique extracts, each crafted to align with a specific chakra. A holistic approach to cannabis that balances your energy centers.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="./assets/images/240423_HASH_Tropicana Cookies_Live Rosin.png" alt="Signature Series">
+            <div class="product-category">Signature Series</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Transcendence Blend</h3>
+            <p class="product-description">A proprietary blend of multiple strains, carefully selected and extracted to create a balanced, full-spectrum experience that promotes deep meditation and spiritual awareness.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>5+</h3>
+          <p>Years of Expertise</p>
+        </div>
+        <div class="stat-item">
+          <h3>15+</h3>
+          <p>Unique Products</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Natural Ingredients</p>
+        </div>
+        <div class="stat-item">
+          <h3>250+</h3>
+          <p>Satisfied Retailers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="./assets/images/marijuana.jpg" alt="Our Process">
+        </div>
+        <div class="about-content">
+          <h2>Our <span>Philosophy</span></h2>
+          <p>At HASH, we believe cannabis is more than just a plant—it's a pathway to wellness, spiritual growth, and enhanced consciousness. We approach extraction as both an art and a science, respecting the plant's natural properties while using cutting-edge techniques.</p>
+          <p>Every batch is crafted with intention, preserving the full spectrum of cannabinoids and terpenes that nature intended. Our process begins with selecting premium flower, which is immediately flash-frozen to preserve its essence.</p>
+          <p>We believe in transparency, sustainability, and the healing power of plants. Our products are designed to help you connect with yourself, others, and the world around you in more meaningful ways.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Join Our Community</h2>
+        <p>Subscribe to our newsletter for exclusive product releases, educational content about cannabis extraction, and special promotions. Be the first to know about our limited edition drops.</p>
+        <a href="#" class="btn">Subscribe Now</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <img src="./assets/svgs/Asset 4.svg" alt="HASH Logo" style="height: 52px;">
+          </div>
+          <p>HASH is dedicated to creating premium cannabis extracts that honor the plant's natural properties while promoting holistic wellness and spiritual growth.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-heading">Products</h4>
+          <ul class="footer-links">
+            <li><a href="#">Live Resin</a></li>
+            <li><a href="#">Badders</a></li>
+            <li><a href="#">Limited Editions</a></li>
+            <li><a href="#">Concentrates</a></li>
+            <li><a href="#">Gift Sets</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Process</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-heading">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Find a Retailer</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 HASH - Holistic And Spiritual Health. All rights reserved.</p>
+        <p>You must be 21+ to enter this site. Please consume responsibly.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

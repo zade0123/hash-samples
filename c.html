@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASH - Holistic and Spiritual Health</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --secondary: #f9a825;
+            --dark: #1b5e20;
+            --light: #f1f8e9;
+            --accent: #8bc34a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--light);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .age-verify {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .age-verify:hover {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('./assets/images/marijuana.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #121212;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: auto; /* Added to set width to auto */
+        }
+        
+        .cta-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .featured-products {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .centered {
+            text-align: center;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 250px;
+            background: url('./assets/images/240423_HASH_Tropicana\ Cookies_Live\ Rosin.png') center/cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            text-align: left;
+        }
+        
+        .product-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .about-section {
+            padding: 8rem 2rem;
+            background-color: rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin-top: 3rem;
+        }
+        
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            background: url('./assets/images/cannabisfarmer.jpg') center/cover;
+            border-radius: 15px;
+            height: 400px;
+        }
+        
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-desc {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .testimonials {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 15px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: url('./assets/images/cannabisfarmer.jpg') center/cover;
+        }
+        
+        .author-name {
+            text-align: left;
+        }
+        
+        .author-name h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-name p {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            padding: 6rem 2rem;
+            background-color: var(--dark);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        footer {
+            background-color: #0a0a0a;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-about h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .newsletter-button {
+            background-color: var(--accent);
+            color: #121212;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-button:hover {
+            background-color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .values {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Add this new style for the about section CTA button */
+        .about-text .cta-btn {
+            display: inline-block;
+            width: fit-content;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="./assets/svgs/Asset 4.svg" alt="HASH Logo" style="height: 42px;"></div>
+        <nav>
+            <ul>
+                <li><a href="/a.html">Sample A</a></li>
+                <li><a href="/b.html">Sample B</a></li>
+                <li><a href="/c.html">Sample C</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Discover the <span>Essence</span> of Holistic Wellness</h1>
+        <p>Premium cannabis concentrates crafted with intention for mind, body, and spirit.</p>
+        <a href="#shop" class="cta-btn">Explore Our Products</a>
+    </section>
+
+    <section class="featured-products" id="products">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Discover our artisanal selection of premium live resins and badders, carefully extracted to preserve the plant's full spectrum of beneficial compounds.</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <div class="product-category">Live Resin</div>
+                    <h3 class="product-name">Cosmic Clarity</h3>
+                    <p class="product-desc">A mind-expanding blend with high terpene content for enhanced flavor and effect.</p>
+                    <a href="#" class="product-link">Discover More →</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <div class="product-category">Badder</div>
+                    <h3 class="product-name">Serenity Solace</h3>
+                    <p class="product-desc">Smooth, buttery consistency with calming properties perfect for evening relaxation.</p>
+                    <a href="#" class="product-link">Discover More →</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-info">
+                    <div class="product-category">Live Resin</div>
+                    <h3 class="product-name">Harmony Horizon</h3>
+                    <p class="product-desc">Balanced terpene profile providing clarity and creative inspiration.</p>
+                    <a href="#" class="product-link">Discover More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2 class="section-title">Our Philosophy</h2>
+        <p class="section-subtitle centered">At HASH, we believe in the transformative power of cannabis when approached with intention and respect.</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Holistic Extraction</h3>
+                <p>Our extraction processes are designed to preserve the full spectrum of cannabinoids, terpenes, and natural plant compounds. We believe in honoring the complete profile that nature intended.</p>
+                <p>Each batch is carefully crafted using sustainable practices, from soil to oil, ensuring minimal environmental impact while maximizing therapeutic potential.</p>
+                <a href="#" class="cta-btn">Learn About Our Process</a>
+            </div>
+            <div class="about-image"></div>
+        </div>
+        
+        <div class="values">
+            <div class="value-item">
+                <div class="value-icon">🌱</div>
+                <h3 class="value-title">Sustainability</h3>
+                <p class="value-desc">We prioritize environmental responsibility in every stage of our production process.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">⚗️</div>
+                <h3 class="value-title">Purity</h3>
+                <p class="value-desc">Rigorous testing ensures our products are free from contaminants and of the highest quality.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🔄</div>
+                <h3 class="value-title">Harmony</h3>
+                <p class="value-desc">Our formulations aim to create balance between mind, body, and spiritual wellbeing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">Customer Experiences</h2>
+        <p class="section-subtitle">Hear from our community about how HASH products have supported their wellness journey.</p>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-item">
+                <p class="testimonial-text">"HASH's live resin has transformed my approach to mindfulness. The clarity and presence I experience has deepened my meditation practice significantly."</p>
+                <div class="testimonial-author">
+                    <div class="author-image"></div>
+                    <div class="author-name">
+                        <h4>Michael K.</h4>
+                        <p>Wellness Coach</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Join Our Community</h2>
+            <p>Subscribe to receive updates on new products, wellness tips, and exclusive offers.</p>
+            <a href="#" class="cta-btn">Sign Up Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <img src="./assets/svgs/Asset 4.svg" alt="HASH Logo" style="height: 50px;">
+                <p>Holistic And Spiritual Health is dedicated to creating premium cannabis concentrates that support wellbeing and conscious exploration.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">TW</a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Process</a></li>
+                    <li><a href="#">Lab Results</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>Stay Connected</h3>
+                <p>Join our mailing list for updates and special offers.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email">
+                    <button class="newsletter-button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 HASH - Holistic and Spiritual Health. All rights reserved.</p>
+            <p>Must be 21+ to purchase. Please consume responsibly.</p>
+        </div>
+    </footer>
+</body>
+</html>
